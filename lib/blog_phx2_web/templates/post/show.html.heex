@@ -1,0 +1,11 @@
+<ul>
+
+    <img src={Routes.static_path(@conn, "/images/blog/_blog_" <> @post.avatar.file_name )}>
+    <h1><%= @post.title %></h1>
+<p>
+    <%= @post.body %>
+</p>
+</ul>
+
+<span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span> |
+<span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>

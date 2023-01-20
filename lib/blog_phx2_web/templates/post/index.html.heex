@@ -1,0 +1,36 @@
+<h1>BLOG Posts</h1>
+
+<body style="background: white">
+<table style="margin: 2em">
+    <div class ="container">
+  <div class = "row gx-5 d-flex justify-content-between" style="margin: 0em 20em 0em 0em;">
+<span><%= link "New Post", to: Routes.post_path(@conn, :new) %></span>
+<%= for post <- @posts do %>
+    <div style="width: 38em !important; margin: 4em !important;">
+      <div class="card" style="width: 100% !important;">
+        <div class = "row d-flex justify-content-center" style="">
+          <a href= {Routes.post_path(@conn, :show, post)}>
+            <img class = "teamPic" src={Routes.static_path(@conn, "/images/blog/_thumb_" <> post.avatar.file_name )} style="width: 90% !important; height: relative !important;">
+          </a>
+        </div>
+        <div class = "row gx-5">
+          <div class = "col-1">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class = "col-10">
+            <p style="color: "><%= post.title %></p>
+            <p class="title" style="color: "><%= BlogPhx2Web.PostView.fetch_date(post.avatar.updated_at) %></p>
+            <%= link "Show", to: Routes.post_path(@conn, :show, post) %>
+        <span><%= link "Edit", to: Routes.post_path(@conn, :edit, post) %></span>
+        <span><%= link "Delete", to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          </div>
+        </div>
+      </div> <!-- card -->
+    </div>
+<% end %>
+  </div> <!-- row -->
+    </div> <!-- container -->
+
+</table>
+
+</body>
