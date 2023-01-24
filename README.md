@@ -11,6 +11,9 @@ all of the posts.
   see [Arc](https://github.com/stavro/arc#configuration) and [Arc Ecto](https://github.com/stavro/arc_ecto)
   for additional configurations.
   * Create and migrate your database with `mix ecto.setup`
+  * Enter the assets folder `cd assets`
+  * Install npm into the project `npm init -y`
+  * Install Bootstrap using npm `npm i bootstrap @popperjs/core`
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser and get started with your blog.
