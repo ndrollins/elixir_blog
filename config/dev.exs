@@ -25,6 +25,11 @@ config :blog_phx2, BlogPhx2Web.Endpoint,
   debug_errors: true,
   secret_key_base: "gJfFf/rKjkvCpV4UQvN4VmVaGcNTYHQFtgT46iQPIojOrUIBuVXf9Rz1sUWtrHAu",
   watchers: [
+    sass: {
+      DartSass,
+      :install_and_run,
+      [:default, ~w(--embed-source-map --source-map-urls=absolute --watch)]
+    },
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
   ]

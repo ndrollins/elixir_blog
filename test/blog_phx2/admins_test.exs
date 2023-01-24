@@ -35,7 +35,12 @@ defmodule BlogPhx2.AdminsTest do
 
     test "update_post/2 with valid data updates the post" do
       post = post_fixture()
-      update_attrs = %{avatar: "some updated avatar", body: "some updated body", title: "some updated title"}
+
+      update_attrs = %{
+        avatar: "some updated avatar",
+        body: "some updated body",
+        title: "some updated title"
+      }
 
       assert {:ok, %Post{} = post} = Admins.update_post(post, update_attrs)
       assert post.avatar == "some updated avatar"

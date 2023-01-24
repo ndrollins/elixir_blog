@@ -4,7 +4,11 @@ defmodule BlogPhx2Web.PostControllerTest do
   import BlogPhx2.AdminsFixtures
 
   @create_attrs %{avatar: "some avatar", body: "some body", title: "some title"}
-  @update_attrs %{avatar: "some updated avatar", body: "some updated body", title: "some updated title"}
+  @update_attrs %{
+    avatar: "some updated avatar",
+    body: "some updated body",
+    title: "some updated title"
+  }
   @invalid_attrs %{avatar: nil, body: nil, title: nil}
 
   describe "index" do

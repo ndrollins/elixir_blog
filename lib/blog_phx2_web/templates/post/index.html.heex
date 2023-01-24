@@ -1,10 +1,9 @@
 <h1>BLOG Posts</h1>
 
 <body style="background: white">
-<table style="margin: 2em">
-    <div class ="container">
-  <div class = "row gx-5 d-flex justify-content-between" style="margin: 0em 20em 0em 0em;">
 <span><%= link "New Post", to: Routes.post_path(@conn, :new) %></span>
+  <tbody style="color: white">
+  <div class = "row gx-5 d-flex justify-content-between" style="margin: 0em 20em 0em 0em;">
 <%= for post <- @posts do %>
     <div style="width: 38em !important; margin: 4em !important;">
       <div class="card" style="width: 100% !important;">
@@ -29,8 +28,7 @@
     </div>
 <% end %>
   </div> <!-- row -->
-    </div> <!-- container -->
+  </tbody>
 
-</table>
 
 </body>

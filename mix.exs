@@ -50,6 +50,7 @@ defmodule BlogPhx2.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:arc, "~> 0.11.0"},
       {:arc_ecto, "~> 0.11.3"},
+      {:dart_sass, "~> 0.5", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -65,7 +66,13 @@ defmodule BlogPhx2.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      # "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": [
+        "esbuild default --minify",
+        "sass default --no-source-map --style=compressed",
+        # "cmd --cd assets node build.js --deploy",
+        "phx.digest"
+      ]
     ]
   end
 end

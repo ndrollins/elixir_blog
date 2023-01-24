@@ -7,6 +7,15 @@
 # General application configuration
 import Config
 
+# Setting for using scss SASS files
+
+config :dart_sass,
+  version: "1.54.5",
+  default: [
+    args: ["css/app.scss", "../priv/static/assets/app.css"],
+    cd: Path.expand("../assets", __DIR__)
+  ]
+
 config :blog_phx2,
   ecto_repos: [BlogPhx2.Repo]
 

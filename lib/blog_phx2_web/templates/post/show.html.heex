@@ -1,11 +1,17 @@
-<ul>
-
-    <img src={Routes.static_path(@conn, "/images/blog/_blog_" <> @post.avatar.file_name )}>
-    <h1><%= @post.title %></h1>
-<p>
-    <%= @post.body %>
-</p>
-</ul>
-
 <span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span> |
+<span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>
+<div style="margin: 1.5em">
+  <div class = "row gx-5 d-flex justify-content-between" style="">
+    <div class = "col-5" style="width: auto !important;">
+        <div class = "row d-flex justify-content-center" style="">
+          <img class = "teamPic" src={Routes.static_path(@conn, "/images/blog/_blog_" <> @post.avatar.file_name )} alt="Tess" style="width: 55% !important; height: 55% !important;">
+        </div>
+    <h1 style="text-align:center"><%= @post.title %></h1>
+    </div> <!-- col-6 -->
+  </div> <!-- row -->
+</div> <!-- container -->
+  <p style="color:Gray; padding: 1% 37% 1% 10%; font-size: 14px;">
+   &emsp; <%= @post.body %>
+  </p>
+
 <span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>

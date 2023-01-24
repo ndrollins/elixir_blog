@@ -9,7 +9,7 @@ defmodule BlogPhx2.Avatar do
   # To add a thumbnail version:
   @versions [:original, :thumb, :blog]
 
-   @extension_whitelist ~w(.jpg .jpeg .gif .png)
+  @extension_whitelist ~w(.jpg .jpeg .gif .png)
 
   def acl(:thumb, _), do: :public_read
 
@@ -19,31 +19,31 @@ defmodule BlogPhx2.Avatar do
   # end
 
   # Whitelist file extensions:
-   def validate({file, _}) do
-     ~w(.jpg .jpeg .gif .png) |> Enum.member?(Path.extname(file.file_name))
-   end
+  def validate({file, _}) do
+    ~w(.jpg .jpeg .gif .png) |> Enum.member?(Path.extname(file.file_name))
+  end
 
   # Define a thumbnail transformation:
-   def transform(:thumb, _) do
-     {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250"}
-     #{:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
-   end
+  def transform(:thumb, _) do
+    {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250"}
+    # {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
+  end
 
-   def transform(:blog, _) do
-     {:convert, "-strip -thumbnail 1440x957^ -gravity center -extent 1440x957"}
-     #{:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
-   end
+  def transform(:blog, _) do
+    {:convert, "-strip -thumbnail 1440x957^ -gravity center -extent 1440x957"}
+    # {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
+  end
 
   # Override the persisted filenames:
   def filename(version, {file, scope}) do
-   #version
+    # version
     file_name = Path.basename(file.file_name, Path.extname(file.file_name))
     "#{scope.id}_#{version}_#{file_name}"
   end
 
   # Override the storage directory:
   def storage_dir(version, {file, scope}) do
-   "priv/static/images/blog/#{scope.id}"
+    "priv/static/images/blog/#{scope.id}"
   end
 
   def __storage, do: Arc.Storage.Local
